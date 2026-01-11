@@ -56,7 +56,7 @@ def save_raw_data(weather_data, city):
     logger.info(f"Saved data to {path}.")
 
 def main():
-    total_cities = len(city)
+    total_cities = len(cities)
     success = 0
     failed = 0
     for idx, city in enumerate(cities, start=1):

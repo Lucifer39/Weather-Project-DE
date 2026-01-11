@@ -145,9 +145,100 @@ more_international_cities = [
     "Wellington", "Christchurch"
 ]
 
+even_more_india_cities = [
+    # Odisha
+    "Puri", "Balasore", "Berhampur",
+
+    # Assam & NE
+    "Dibrugarh", "Tezpur", "Tinsukia",
+    "Dimapur", "Kohima",
+    "Itanagar",
+    "Agartala",
+
+    # Maharashtra (coastal & interior)
+    "Ratnagiri", "Sindhudurg", "Chandrapur",
+
+    # Karnataka (interior)
+    "Chitradurga", "Davangere", "Hassan",
+
+    # Tamil Nadu (coastal + dry)
+    "Nagapattinam", "Cuddalore", "Ramanathapuram",
+
+    # Andhra Pradesh (coastal)
+    "Machilipatnam", "Srikakulam",
+
+    # Kerala (coastal + hill)
+    "Alappuzha", "Kottayam", "Idukki", "Wayanad",
+
+    # Himachal Pradesh
+    "Kullu", "Solan", "Una",
+
+    # Jammu & Kashmir
+    "Anantnag", "Baramulla", "Kupwara",
+
+    # Rajasthan (desert climate)
+    "Jaisalmer", "Barmer", "Churu",
+
+    # Gujarat (industrial + coastal)
+    "Anand", "Nadiad", "Vapi"
+]
+
+even_more_international_cities = [
+    # Europe (climate diversity)
+    "Reykjavik", "Tallinn", "Riga", "Vilnius",
+    "Sofia", "Bucharest", "Belgrade",
+    "Zagreb", "Ljubljana",
+    "Bern", "Lausanne",
+
+    # USA (weather extremes)
+    "Anchorage",        # extreme cold
+    "Fairbanks",
+    "Honolulu",         # tropical
+    "Hilo",
+    "El Paso",          # desert
+    "Albuquerque",
+    "Boise",            # mountain
+    "Salt Lake City",
+
+    # Central America
+    "Mexico City", "Guadalajara", "Monterrey",
+    "San Jose", "Panama City",
+
+    # South America (expanded)
+    "Quito", "Guayaquil",
+    "La Paz",
+    "Montevideo",
+    "Asuncion",
+
+    # Africa (expanded)
+    "Addis Ababa",
+    "Dar es Salaam",
+    "Kampala",
+    "Harare",
+    "Windhoek",
+
+    # Middle East (climate extremes)
+    "Tehran", "Isfahan",
+    "Baghdad",
+    "Basra",
+
+    # Asia (weather-interesting)
+    "Ulaanbaatar",      # extreme cold
+    "Tashkent",
+    "Almaty",
+    "Baku",
+
+    # Pacific islands
+    "Suva",
+    "Port Moresby"
+]
+
+
 ALL_CITIES = (
     india_cities
     + more_india_cities
+    + even_more_india_cities
     + international_cities
     + more_international_cities
+    + even_more_international_cities
 )
