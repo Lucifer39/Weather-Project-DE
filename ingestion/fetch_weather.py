@@ -5,67 +5,17 @@ from datetime import datetime
 import time
 from config.logging_config import setup_logging
 import logging
+from config.cities import ALL_CITIES
 
 API_KEY = os.getenv("WEATHER_API_KEY")
 
 setup_logging()
 logger = logging.getLogger(__name__)
+cities = ALL_CITIES
 
 if not API_KEY:
     logging.error("API KEY not set")
     SystemExit(1)
-
-india_cities = [
-    "Delhi", "Mumbai", "Bangalore", "Chennai", "Hyderabad", "Kolkata",
-    "Pune", "Ahmedabad", "Jaipur", "Chandigarh", "Noida", "Gurgaon",
-    "Faridabad", "Ghaziabad", "Lucknow", "Kanpur", "Indore", "Bhopal",
-    "Nagpur", "Surat", "Vadodara", "Rajkot", "Udaipur",
-    "Kochi", "Trivandrum", "Thrissur", "Coimbatore", "Madurai",
-    "Trichy", "Salem", "Erode",
-    "Vijayawada", "Visakhapatnam", "Guntur",
-    "Warangal", "Nizamabad",
-    "Patna", "Gaya", "Muzaffarpur",
-    "Ranchi", "Jamshedpur", "Dhanbad",
-    "Bhubaneswar", "Cuttack", "Rourkela",
-    "Guwahati", "Silchar",
-    "Shillong", "Imphal", "Aizawl",
-    "Agra", "Mathura", "Meerut", "Aligarh",
-    "Dehradun", "Haridwar", "Rishikesh",
-    "Shimla", "Manali", "Dharamshala",
-    "Jammu", "Srinagar", "Leh"
-]
-
-international_cities = [
-    # UK & Europe
-    "London", "Manchester", "Birmingham", "Edinburgh",
-    "Paris", "Lyon", "Marseille",
-    "Berlin", "Munich", "Frankfurt",
-    "Amsterdam", "Rotterdam",
-    "Madrid", "Barcelona",
-    "Rome", "Milan",
-    "Zurich", "Geneva",
-
-    # USA & Canada
-    "New York", "Los Angeles", "San Francisco", "Seattle",
-    "Chicago", "Boston", "Austin", "Dallas",
-    "Toronto", "Vancouver", "Montreal",
-
-    # Middle East
-    "Dubai", "Abu Dhabi", "Doha", "Riyadh", "Jeddah",
-
-    # Asia-Pacific
-    "Singapore", "Kuala Lumpur", "Bangkok",
-    "Jakarta", "Manila",
-    "Tokyo", "Osaka", "Kyoto",
-    "Seoul", "Busan",
-    "Hong Kong",
-    "Shanghai", "Beijing", "Shenzhen",
-    "Sydney", "Melbourne", "Brisbane",
-    "Auckland"
-]
-
-
-cities = india_cities + international_cities
 
 def fetch_weather(city):
     logger.info(f"Fetching data started for {city}...")
@@ -106,14 +56,22 @@ def save_raw_data(weather_data, city):
     logger.info(f"Saved data to {path}.")
 
 def main():
-    for city in cities:
+    total_cities = len(city)
+    success = 0
+    failed = 0
+    for idx, city in enumerate(cities, start=1):
         data = fetch_weather(city)
         time.sleep(1)
 
         if not data:
-            logger.error("No data is fetched")
+            failed += 1
+            logger.error(f"[{idx}/{total_cities}] FAILED | city = {city}")
         else:
             save_raw_data(data, city)
+            success += 1
+            logger.info(f"[{idx}/{total_cities}] SUCCESS | city = {city}")
+    
+    logger.info(f"Task completed | {success} success | {failed} failed")
 
     
 
